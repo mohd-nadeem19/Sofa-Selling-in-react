@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = () => {
     return (
-        <div className='relative'>
+        <div className='relative mt-8'>
             <div className="w-full">
                 <img
                     className="w-full h-full object-cover"
