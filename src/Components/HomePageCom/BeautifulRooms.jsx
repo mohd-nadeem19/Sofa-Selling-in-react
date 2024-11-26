@@ -15,7 +15,10 @@ const BeautifulRooms = () => {
 
             <div className='relative'>
                 <div className='w-[400px] h-[580px] '>
+                    <div className='image-container'>
                     <img className=' w-full h-full object-cover' src="https://s3-alpha-sig.figma.com/img/f89a/66d9/4961c3801f4c07439f27b13468e5e545?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=I-WuXHvvCJwtk0FO38OSPZWwMyogBXMFfQRhwck5lDHa9d6f9DANYVFFaB9pT1w3G7s-hca-zJZb-CWVnCfOAgp6M4w0YamQzaJKTBXpzy3kGk2ti3mk7nx4j6jMFYaJ0sCTZJ3qSZcogu2JYzEgWIVyCaIHSmQ4EcoOZitrCLuTamwJCxIJvIHJ2BjZu52TcsBfB0AC3sql0d2EFpllwOVTCEo2BpwDJXrkJA2zzX06kIw3e3sOHb-3qMTJSNXDp1FUZHiK7e4r3oHaSBYVkkB6BJSvjZABk1dfBBuDdZYjY8helacjc1IvD8ItAFZbiomnMNACzJ3gCLPACsjIoQ__" alt="" />
+
+                    </div>
                 </div>
                 <div className='flex absolute top-[400px] left-8'>
                     <div className='flex items-center justify-center flex-col gap-2 w-[180px] h-[130px] bg-[#FFFFFF] opacity-[72%] '>
@@ -36,7 +39,10 @@ const BeautifulRooms = () => {
 
             <div className='w-[350px] h-[480px] '>
                 <div className='relative'>
+                <div className='image-container'>
                 <img className='w-full h-full object-cover' src="https://s3-alpha-sig.figma.com/img/acc4/8179/d1b18b523420e79dda1e92951ecde49b?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ENP1trCedwOjdAHSEeUpzLl3UUsWO2asd78FaVDqC7N3Eo-PmoQdXVCZXxdEHWYYfmZj1wrBRZzgYVpIxJKkYJj1YITlBPLdaevwiT2bPfLx-UCoawdKJtRqfFFqRyTlFQUgxjixhLgJcbdt1d4rLNTmfCSOItaydOPpW2Zy~JFSPptfVtSEQlhYmn3SmUej5EDQVu6nYnzyZBMFm2boQ79amgTnN~QAjGo4asd4GJV0sATFevgL4Zz20EGHd9SdUM0bGO4RL-PBJW8NQWlorkU9DcmiBIONW44vUiZ4iov8VeQZUqXwfXIt1rLrLOGBdmwGrZ54a50jcZvCOjt0Zw__" alt="" />
+
+                </div>
                 <svg className='absolute top-52 left-[300px]' width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_d_1_421)">
                         <circle cx="39" cy="35" r="24" fill="white" />
@@ -58,7 +64,7 @@ const BeautifulRooms = () => {
                 </div>
 
 
-                <div className='flex gap-2 mt-6 place-items-center w-[100px] h-[30px]'>
+                <div className='flex gap-2 mt-8 place-items-center w-[100px] h-[30px]'>
                     <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle opacity="0.7" cx="13.5" cy="13.5" r="13" stroke="#B88E2F" />
                         <circle cx="13.5" cy="13.5" r="5" fill="#B88E2F" stroke="#B88E2F" />

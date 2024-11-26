@@ -2,6 +2,30 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Register = () => {
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();    
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+    
+        const formData = {
+          email: email,
+          password: password,
+          returnSecureToken: true
+        }
+        const response = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDB7UXbT2nxHH4zOBZ_NTQrdJRUdtVAQqY",
+          {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+              "Content-Type" : "application/json"
+            }
+          }
+        )
+        const data = await response.json()
+        console.log(data);
+    
+      }
     return (
         <div className='flex gap-10 p-6 w-full'>
             <div className='w-[731px] h-[825px]'>
@@ -23,15 +47,15 @@ const Register = () => {
                 <div className="flex flex-col place-items-center space-y-4 ml-24 w-[330px] h-[107px]">
                     <h1 className='font-poppins font-[400] text-lg'>Welcome to lorem..!</h1>
                     <div className='flex place-items-center justify-around w-[330px] h-[60px] bg-[#49BBBD] bg-opacity-60 rounded-[33px] '>
-                       <Link to="/login"><button className='w-[146px] h-[40px] bg-[#49BBBD] rounded-[33px]'><span className='text-white'>Login</span></button></Link> 
-                       <span className='text-white'>register</span>
+                       <Link to="/login"><button><span className='text-white'>Login</span></button></Link> 
+                       <span className='text-center p-1 bg-[#49BBBD] w-[146px] h-[40px]  rounded-[33px] text-white'>register</span>
 
                     </div>
                 </div>
 
                 <p className='font-poppins font-[400] text-[16px]  text-[#5B5B5B] w-[400px] ml-12 mt-6'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
-                <form className='w-[400px] h-[301px] space-y-6 ml-10 mt-8 '>
+                <form onSubmit={handleSubmit} className='w-[400px] h-[301px] space-y-6 ml-10 mt-8 '>
                     <div className='flex flex-col'>
                         <label className='ml-4 mb-2' htmlFor='email'>Email Address</label>
                         <input className='w-[400px] h-[54px] border-2 border-[#49BBBD] rounded-[33px] pl-8 ' type="email" name="email" id="email" placeholder='Enter your Email Address' />
@@ -53,7 +77,7 @@ const Register = () => {
                             </svg>
                         </div>
                     </div>
-                    <button className='mt-3 ml-52 bg-[#49BBBD] text-white py-3 px-20 rounded-[33px]'>Register</button>
+                    <button type='submit' className='mt-3 ml-52 bg-[#49BBBD] text-white py-3 px-20 rounded-[33px]'>Register</button>
 
                 </form>
 

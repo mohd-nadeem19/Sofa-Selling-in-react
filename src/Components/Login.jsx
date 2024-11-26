@@ -2,6 +2,28 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
+  const handlerSubmit = async (e) =>{
+    e.preventDefault();    
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const formData = {
+      email: email,
+      password: password
+    }
+    const response = await fetch("identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDB7UXbT2nxHH4zOBZ_NTQrdJRUdtVAQqY",
+      {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type" : "application/json"
+        }
+      }
+    )
+    const data = await response.json()
+    console.log(data);
+
+  }
   return (
     <div className='flex gap-8 p-4  w-full'>
       <div className='relative w-[740px] h-[825px]'>
@@ -20,17 +42,17 @@ const Login = () => {
         <div className="flex flex-col place-items-center space-y-4 ml-24 w-[330px] h-[107px]">
           <h1 className='font-poppins font-[400] text-lg'>Welcome to lorem..!</h1>
           <div className='flex place-items-center justify-around w-[330px] h-[60px] bg-[#49BBBD] bg-opacity-60 rounded-[33px] '>
-          <span className='text-white'>Login</span>
-            <Link to="/Register"><button className='w-[146px] h-[40px] bg-[#49BBBD] rounded-[33px]'><span className='text-white'>Register</span></button></Link>
+          <span className='text-center p-1 bg-[#49BBBD] w-[146px] h-[40px]  rounded-[33px] text-white'>Login</span>
+            <Link to="/Register"><button><span className='text-white'>Register</span></button></Link>
           </div>
         </div>
 
         <p className='font-poppins font-[400] text-[16px]  text-[#5B5B5B] w-[400px] ml-12 mt-6'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
-        <form className='w-[454px] h-[301px] space-y-6 ml-10 mt-8 '>
+        <form onSubmit={handlerSubmit} className='w-[454px] h-[301px] space-y-6 ml-10 mt-8 '>
           <div className='flex flex-col'>
             <label className='ml-4 mb-2' htmlFor='name'>User name</label>
-            <input className='w-[435px] h-[54px] border-2 border-[#49BBBD] rounded-[33px] pl-8 ' type="type" name="name" id="name" placeholder='Enter your User name' />
+            <input className='w-[435px] h-[54px] border-2 border-[#49BBBD] rounded-[33px] pl-8 ' type="email" name="email" id="email" placeholder='Enter your user name' />
           </div>
 
           <div className='flex flex-col'>
@@ -55,7 +77,7 @@ const Login = () => {
             <button className='font-poppins font-[300] text-[12px]'>Forgot Password123</button>
           </div>
 
-          <button className='mt-3 ml-52 bg-[#49BBBD] text-white py-3 px-20 rounded-[33px]'>Login</button>
+          <button type='submit' className='mt-3 ml-52 bg-[#49BBBD] text-white py-3 px-20 rounded-[33px]'>Login</button>
 
         </form>
 

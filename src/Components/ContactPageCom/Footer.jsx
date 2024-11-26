@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='w-full'>
+        <div className='w-full '>
             <div className='border-t-2 border-[#000000] opacity-[17%]'></div>
             <div className='flex pt-16 pl-12 gap-44 w-[1240px] h-[430px] '>
                 <div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = () => {
     return (
-        <div className='relative mt-8'>
+        <div className="relative mt-8">
             <div className="w-full">
                 <img
                     className="w-full h-full object-cover"
@@ -10,16 +10,20 @@ const Hero = () => {
                     alt=""
                 />
             </div>
-            <div className='absolute top-[400px] left-[720px] p-6 w-[500px] h-[380px] rounded-lg bg-[#FFF3E3]'>
-                <p className='font-Poppins font-[600] text-[16px] text-[#333333]'>New Arrival</p>
-                <h1 className='font-poppins font-[700] text-[52px] text-[#B88E2F] w-[400px]'>Discover Our New Collection</h1>
-                <p className='font-poppins font-[500] text-[18px] text-[#333333] w-[430px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-                <div className='bg-[#B88E2F] mt-6 w-[130px] h-[60px]  text-white font-poppins font-[400] text-center pt-4 uppercase'>
-                    BUY Now
+            <div className="absolute top-[40%] right-[5%] md:top-[40%] md:right-[20%] transform translate-x-0 md:translate-x-1/4 translate-y-1/4 p-6 w-[90%] md:w-[500px] h-auto rounded-lg bg-[#FFF3E3]">
+            <p className="font-poppins font-[600] text-[14px] md:text-[16px] text-[#333333]">New Arrival</p>
+                <h1 className="font-poppins font-[700] text-[32px] md:text-[52px] text-[#B88E2F] w-full md:w-[400px]">
+                    Discover Our New Collection
+                </h1>
+                <p className="font-poppins font-[500] text-[14px] md:text-[18px] text-[#333333] w-full md:w-[430px]">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.
+                </p>
+                <div className="bg-[#B88E2F] mt-6 w-[100px] md:w-[130px] h-[50px] md:h-[60px] text-white font-poppins font-[400] text-center flex items-center justify-center uppercase">
+                    BUY NOW
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Hero
+export default Hero;

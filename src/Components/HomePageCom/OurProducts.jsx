@@ -4,7 +4,7 @@ import OurProduct from './OurProduct'
 const OurProducts = () => {
     return (
         <div className='mt-12'>
-            <h1 className='font-poppins font-[700] text-[40px] text-[#3A3A3A] text-center mb-12'>Our Products</h1>
+            <h1 className='font-poppins font-[700] text-[40px] text-[#3A3A3A] text-center mb-12 hover:text-[#B88E2F]'>Our Products</h1>
 
 
             <div className='grid grid-cols-4 grid-rows-2 place-items-center gap-4 ml-8 w-[1200px]'>
@@ -91,7 +91,7 @@ const OurProducts = () => {
                 />
 
             </div>
-            <button className='w-[245px] h-[48px] border-2 border-[#B88E2F] text-[#B88E2F] font-poppins font-[600] text-[16px] ml-[500px] mt-12'>
+            <button className='w-[245px] h-[48px] border-2 border-[#B88E2F] hover:bg-[#B88E2F] font-poppins font-[600] text-[16px] ml-[500px] mt-12'>
                 Show More
             </button>
         </div>

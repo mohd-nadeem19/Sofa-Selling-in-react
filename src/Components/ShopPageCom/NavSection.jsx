@@ -4,8 +4,8 @@ const NavSection = () => {
   return (
     <div className='mt-12'>
       <div className='relative w-full h-[320px] '>
-        <img className='w-full h-full object-cover opacity-[50%]' src="https://s3-alpha-sig.figma.com/img/1461/f3d6/ff74c027a1888544144abe4be6e02cbf?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=R96gtZjfm0cevXNnOxjDK-uwZSzbyjLI5tmwmAH1-IBzTCIJYfPUxt4Zhv-I~mpDFLtMfvEtbxwlgwrdraGa16-AcnDk5yIeLyNs7AyOxGyCifH-f-OmMpaYwc6ifXKbrPfwJ2K~IPqSZEP1DC7I1ZtybNA~xGuQJAQCPRAE2StGd3nVDBr97od~8anJDh~29OVaeGjqQZPDlRpIcSzQLsU9fOoOqitr~l3kNhFaxt2L4B14kOvPrhGlR39HhW8T31irEmhn0-XAqB3LwfRhHeS9FFzsfCIcrYMV6W7Ihdm1WGzsUr3ZmqWV7bNk85LyYsYlcIur6JgoHey4GFSF-A__" alt="" />
-        <div className='flex flex-col place-items-center absolute top-1/2 left-1/2' >
+        <img className='w-full h-full object-cover blur-[6px]' src="https://s3-alpha-sig.figma.com/img/1461/f3d6/ff74c027a1888544144abe4be6e02cbf?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=R96gtZjfm0cevXNnOxjDK-uwZSzbyjLI5tmwmAH1-IBzTCIJYfPUxt4Zhv-I~mpDFLtMfvEtbxwlgwrdraGa16-AcnDk5yIeLyNs7AyOxGyCifH-f-OmMpaYwc6ifXKbrPfwJ2K~IPqSZEP1DC7I1ZtybNA~xGuQJAQCPRAE2StGd3nVDBr97od~8anJDh~29OVaeGjqQZPDlRpIcSzQLsU9fOoOqitr~l3kNhFaxt2L4B14kOvPrhGlR39HhW8T31irEmhn0-XAqB3LwfRhHeS9FFzsfCIcrYMV6W7Ihdm1WGzsUr3ZmqWV7bNk85LyYsYlcIur6JgoHey4GFSF-A__" alt="" />
+        <div className='flex flex-col place-items-center absolute top-[90px] left-[50%]' >
           <h1 className='font-poppins font-[500] text-[50px] text-[#000000] '>Shop</h1>
           <div className='flex gap-2 place-items-center'>
             <span className='text-[16px]'>Home</span>
