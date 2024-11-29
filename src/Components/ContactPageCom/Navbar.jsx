@@ -1,69 +1,117 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+// import React from 'react'
+// import { Link } from 'react-router-dom'
+
+// const Navbar = () => {
+//     return (
+//         <div>
+//             <div className='w-full'>
+//                 <div className='flex place-items-center pt-5 pl-4'>
+//                     <div className='flex gap-1'>
+//                         <img className='w-[50px]' src="data:image/png;base64,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" alt="Furniro"></img>
+//                         <span className='text-[34px] font-[700] font-Montserrat'>Furniro</span></div>
+
+//                     <div className='w-[430px] pt-3'>
+//                         <ul className='flex justify-center items-center gap-[35px] ml-[460px]'>
+//                             <li className='font-poppins font-[500] text-[16px] hover:text-[#B88E2F]'><Link to="/">Home</Link></li>
+//                             <li className='font-poppins font-[500] text-[16px] hover:text-[#B88E2F]' ><Link to="/shop">Shop</Link></li>
+//                             <li className='font-poppins font-[500] text-[16px] hover:text-[#B88E2F]' ><Link to="/single">About</Link></li>
+//                             <li className='font-poppins font-[500] text-[16px] hover:text-[#B88E2F]' ><Link to="/contact">Contact</Link></li>
+//                         </ul>
+//                     </div>
+
+//                     <div className='flex justify-center items-center pt-3  gap-8 ml-[400px]'>
+//                         <svg width="22" height="22" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                             <path d="M21.3335 10.0001V4.16675H23.6668V11.1667H21.3335M21.3335 15.8334H23.6668V13.5001H21.3335M9.66683 11.1667C12.7818 11.1667 19.0002 12.7301 19.0002 15.8334V19.3334H0.333496V15.8334C0.333496 12.7301 6.55183 11.1667 9.66683 11.1667ZM9.66683 0.666748C10.9045 0.666748 12.0915 1.15841 12.9667 2.03358C13.8418 2.90875 14.3335 4.09574 14.3335 5.33341C14.3335 6.57109 13.8418 7.75808 12.9667 8.63325C12.0915 9.50842 10.9045 10.0001 9.66683 10.0001C8.42915 10.0001 7.24217 9.50842 6.367 8.63325C5.49183 7.75808 5.00016 6.57109 5.00016 5.33341C5.00016 4.09574 5.49183 2.90875 6.367 2.03358C7.24217 1.15841 8.42915 0.666748 9.66683 0.666748ZM9.66683 13.3834C6.20183 13.3834 2.55016 15.0867 2.55016 15.8334V17.1167H16.7835V15.8334C16.7835 15.0867 13.1318 13.3834 9.66683 13.3834ZM9.66683 2.88341C9.01705 2.88341 8.39388 3.14154 7.93442 3.601C7.47495 4.06047 7.21683 4.68363 7.21683 5.33341C7.21683 5.98319 7.47495 6.60636 7.93442 7.06583C8.39388 7.52529 9.01705 7.78341 9.66683 7.78341C10.3166 7.78341 10.9398 7.52529 11.3992 7.06583C11.8587 6.60636 12.1168 5.98319 12.1168 5.33341C12.1168 4.68363 11.8587 4.06047 11.3992 3.601C10.9398 3.14154 10.3166 2.88341 9.66683 2.88341Z" fill="black" />
+//                         </svg>
+//                         <svg width="20" height="21" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                             <path d="M23.5002 23.4999L18.2665 18.2569M21.1668 11.2499C21.1668 13.88 20.122 16.4023 18.2623 18.2621C16.4026 20.1218 13.8802 21.1666 11.2502 21.1666C8.6201 21.1666 6.09776 20.1218 4.23802 18.2621C2.37828 16.4023 1.3335 13.88 1.3335 11.2499C1.3335 8.61985 2.37828 6.09751 4.23802 4.23778C6.09776 2.37804 8.6201 1.33325 11.2502 1.33325C13.8802 1.33325 16.4026 2.37804 18.2623 4.23778C20.122 6.09751 21.1668 8.61985 21.1668 11.2499V11.2499Z" stroke="black" stroke-width="2" stroke-linecap="round" />
+//                         </svg>
+//                         <svg width="21" height="20" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                             <path d="M7.16683 1.5C3.94566 1.5 1.3335 4.08533 1.3335 7.275C1.3335 9.84983 2.35433 15.9608 12.4028 22.1383C12.5828 22.2479 12.7895 22.3058 13.0002 22.3058C13.2109 22.3058 13.4175 22.2479 13.5975 22.1383C23.646 15.9608 24.6668 9.84983 24.6668 7.275C24.6668 4.08533 22.0547 1.5 18.8335 1.5C15.6123 1.5 13.0002 5 13.0002 5C13.0002 5 10.388 1.5 7.16683 1.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+//                         </svg>
+//                         <svg width="22" height="20" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                             <path d="M24.2354 16.1926H7.95225L8.76982 14.5273L22.3542 14.5027C22.8136 14.5027 23.2073 14.1746 23.2894 13.7207L25.1706 3.19062C25.2198 2.91445 25.146 2.63008 24.9655 2.41406C24.8763 2.30775 24.7651 2.22211 24.6395 2.16309C24.5139 2.10407 24.377 2.07308 24.2382 2.07227L6.95693 2.01484L6.80928 1.32031C6.71631 0.877344 6.31709 0.554688 5.86318 0.554688H1.63857C1.38258 0.554688 1.13707 0.656381 0.95605 0.837398C0.775034 1.01841 0.67334 1.26393 0.67334 1.51992C0.67334 1.77592 0.775034 2.02143 0.95605 2.20245C1.13707 2.38346 1.38258 2.48516 1.63857 2.48516H5.08115L5.72646 5.55312L7.31514 13.2449L5.26982 16.5836C5.16361 16.727 5.09963 16.8972 5.08514 17.075C5.07064 17.2528 5.1062 17.4312 5.18779 17.5898C5.35186 17.9152 5.68271 18.1203 6.04912 18.1203H7.76631C7.40023 18.6065 7.20249 19.1988 7.20303 19.8074C7.20303 21.3551 8.46084 22.6129 10.0085 22.6129C11.5562 22.6129 12.814 21.3551 12.814 19.8074C12.814 19.1977 12.6116 18.6043 12.2507 18.1203H16.6558C16.2897 18.6065 16.0919 19.1988 16.0925 19.8074C16.0925 21.3551 17.3503 22.6129 18.8979 22.6129C20.4456 22.6129 21.7034 21.3551 21.7034 19.8074C21.7034 19.1977 21.5011 18.6043 21.1401 18.1203H24.2382C24.7687 18.1203 25.2034 17.6883 25.2034 17.1551C25.2018 16.8994 25.0992 16.6546 24.9178 16.4743C24.7365 16.294 24.4912 16.1927 24.2354 16.1926ZM7.35889 3.91797L23.1034 3.96992L21.5612 12.6051L9.19365 12.627L7.35889 3.91797ZM10.0085 20.6715C9.53271 20.6715 9.14443 20.2832 9.14443 19.8074C9.14443 19.3316 9.53271 18.9434 10.0085 18.9434C10.4843 18.9434 10.8726 19.3316 10.8726 19.8074C10.8726 20.0366 10.7815 20.2564 10.6195 20.4184C10.4574 20.5805 10.2377 20.6715 10.0085 20.6715ZM18.8979 20.6715C18.4222 20.6715 18.0339 20.2832 18.0339 19.8074C18.0339 19.3316 18.4222 18.9434 18.8979 18.9434C19.3737 18.9434 19.762 19.3316 19.762 19.8074C19.762 20.0366 19.671 20.2564 19.5089 20.4184C19.3469 20.5805 19.1271 20.6715 18.8979 20.6715Z" fill="black" />
+//                         </svg>
+//                     </div>
+
+
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
+
+// export default Navbar
+
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div>
-            <div className='w-full'>
-                <div className='flex place-items-center pt-5 pl-4'>
-                    <div className='flex gap-1'>
+        <nav>
+            <div className="flex gap-4 justify-center items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16">
+                    {/* Logo Section */}
+                    <div className="flex items-center">
                         <img className='w-[50px]' src="data:image/png;base64,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" alt="Furniro"></img>
-                        <span className='text-[34px] font-[700] font-Montserrat'>Furniro</span></div>
 
-                    <div className='w-[430px] pt-3'>
-                        <ul className='flex justify-center items-center gap-[35px] ml-[460px]'>
-                            <li className='font-poppins font-[500] text-[16px] hover:text-[#B88E2F]'><Link to="/">Home</Link></li>
-                            <li className='font-poppins font-[500] text-[16px] hover:text-[#B88E2F]' ><Link to="/shop">Shop</Link></li>
-                            <li className='font-poppins font-[500] text-[16px] hover:text-[#B88E2F]' ><Link to="/single">About</Link></li>
-                            <li className='font-poppins font-[500] text-[16px] hover:text-[#B88E2F]' ><Link to="/contact">Contact</Link></li>
-                        </ul>
+                        <span className="ml-2 text-xl font-semibold">Furniro</span>
                     </div>
 
-                    <div className='flex justify-center items-center pt-3  gap-8 ml-[400px]'>
+                    {/* Mobile Menu Button
+                    <div className="flex md:hidden">
+                        <button className="text-black hover:text-[#B88E2F]">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
+                                stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 6h18M3 12h18M3 18h18" />
+                            </svg>
+                        </button>
+                    </div> */}
+                </div>
+
+                {/* Navigation Links */}
+                <div className="hidden md:flex space-x-10 ml-44">
+                    <Link to="/" className="text-black hover:text-[#B88E2F]">Home</Link>
+                    <Link to="/shop" className="text-black hover:text-[#B88E2F]">Shop</Link>
+                    <Link to="/about" className="text-black hover:text-[#B88E2F]">About</Link>
+                    <Link to="/contact" className="text-black hover:text-[#B88E2F]">Contact</Link>
+                </div>
+
+                {/* Icons Section */}
+                <div className="flex space-x-5 ml-auto mr-4">
+                    <button className="text-black hover:text-[#B88E2F]">
                         <svg width="22" height="22" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21.3335 10.0001V4.16675H23.6668V11.1667H21.3335M21.3335 15.8334H23.6668V13.5001H21.3335M9.66683 11.1667C12.7818 11.1667 19.0002 12.7301 19.0002 15.8334V19.3334H0.333496V15.8334C0.333496 12.7301 6.55183 11.1667 9.66683 11.1667ZM9.66683 0.666748C10.9045 0.666748 12.0915 1.15841 12.9667 2.03358C13.8418 2.90875 14.3335 4.09574 14.3335 5.33341C14.3335 6.57109 13.8418 7.75808 12.9667 8.63325C12.0915 9.50842 10.9045 10.0001 9.66683 10.0001C8.42915 10.0001 7.24217 9.50842 6.367 8.63325C5.49183 7.75808 5.00016 6.57109 5.00016 5.33341C5.00016 4.09574 5.49183 2.90875 6.367 2.03358C7.24217 1.15841 8.42915 0.666748 9.66683 0.666748ZM9.66683 13.3834C6.20183 13.3834 2.55016 15.0867 2.55016 15.8334V17.1167H16.7835V15.8334C16.7835 15.0867 13.1318 13.3834 9.66683 13.3834ZM9.66683 2.88341C9.01705 2.88341 8.39388 3.14154 7.93442 3.601C7.47495 4.06047 7.21683 4.68363 7.21683 5.33341C7.21683 5.98319 7.47495 6.60636 7.93442 7.06583C8.39388 7.52529 9.01705 7.78341 9.66683 7.78341C10.3166 7.78341 10.9398 7.52529 11.3992 7.06583C11.8587 6.60636 12.1168 5.98319 12.1168 5.33341C12.1168 4.68363 11.8587 4.06047 11.3992 3.601C10.9398 3.14154 10.3166 2.88341 9.66683 2.88341Z" fill="black" />
                         </svg>
-                        <svg width="20" height="21" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M23.5002 23.4999L18.2665 18.2569M21.1668 11.2499C21.1668 13.88 20.122 16.4023 18.2623 18.2621C16.4026 20.1218 13.8802 21.1666 11.2502 21.1666C8.6201 21.1666 6.09776 20.1218 4.23802 18.2621C2.37828 16.4023 1.3335 13.88 1.3335 11.2499C1.3335 8.61985 2.37828 6.09751 4.23802 4.23778C6.09776 2.37804 8.6201 1.33325 11.2502 1.33325C13.8802 1.33325 16.4026 2.37804 18.2623 4.23778C20.122 6.09751 21.1668 8.61985 21.1668 11.2499V11.2499Z" stroke="black" stroke-width="2" stroke-linecap="round" />
+                    </button>
+                    <button className="text-black hover:text-[#B88E2F]">
+                    <svg width="20" height="21" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">                            <path d="M23.5002 23.4999L18.2665 18.2569M21.1668 11.2499C21.1668 13.88 20.122 16.4023 18.2623 18.2621C16.4026 20.1218 13.8802 21.1666 11.2502 21.1666C8.6201 21.1666 6.09776 20.1218 4.23802 18.2621C2.37828 16.4023 1.3335 13.88 1.3335 11.2499C1.3335 8.61985 2.37828 6.09751 4.23802 4.23778C6.09776 2.37804 8.6201 1.33325 11.2502 1.33325C13.8802 1.33325 16.4026 2.37804 18.2623 4.23778C20.122 6.09751 21.1668 8.61985 21.1668 11.2499V11.2499Z" stroke="black" stroke-width="2" stroke-linecap="round" />
+                     </svg>
+                    </button>
+                    <button className="text-black hover:text-[#B88E2F]">
+                    <svg width="21" height="20" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M7.16683 1.5C3.94566 1.5 1.3335 4.08533 1.3335 7.275C1.3335 9.84983 2.35433 15.9608 12.4028 22.1383C12.5828 22.2479 12.7895 22.3058 13.0002 22.3058C13.2109 22.3058 13.4175 22.2479 13.5975 22.1383C23.646 15.9608 24.6668 9.84983 24.6668 7.275C24.6668 4.08533 22.0547 1.5 18.8335 1.5C15.6123 1.5 13.0002 5 13.0002 5C13.0002 5 10.388 1.5 7.16683 1.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <svg width="21" height="20" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.16683 1.5C3.94566 1.5 1.3335 4.08533 1.3335 7.275C1.3335 9.84983 2.35433 15.9608 12.4028 22.1383C12.5828 22.2479 12.7895 22.3058 13.0002 22.3058C13.2109 22.3058 13.4175 22.2479 13.5975 22.1383C23.646 15.9608 24.6668 9.84983 24.6668 7.275C24.6668 4.08533 22.0547 1.5 18.8335 1.5C15.6123 1.5 13.0002 5 13.0002 5C13.0002 5 10.388 1.5 7.16683 1.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                    </button>
+                    <button className="text-black hover:text-[#B88E2F]">
                         <svg width="22" height="20" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M24.2354 16.1926H7.95225L8.76982 14.5273L22.3542 14.5027C22.8136 14.5027 23.2073 14.1746 23.2894 13.7207L25.1706 3.19062C25.2198 2.91445 25.146 2.63008 24.9655 2.41406C24.8763 2.30775 24.7651 2.22211 24.6395 2.16309C24.5139 2.10407 24.377 2.07308 24.2382 2.07227L6.95693 2.01484L6.80928 1.32031C6.71631 0.877344 6.31709 0.554688 5.86318 0.554688H1.63857C1.38258 0.554688 1.13707 0.656381 0.95605 0.837398C0.775034 1.01841 0.67334 1.26393 0.67334 1.51992C0.67334 1.77592 0.775034 2.02143 0.95605 2.20245C1.13707 2.38346 1.38258 2.48516 1.63857 2.48516H5.08115L5.72646 5.55312L7.31514 13.2449L5.26982 16.5836C5.16361 16.727 5.09963 16.8972 5.08514 17.075C5.07064 17.2528 5.1062 17.4312 5.18779 17.5898C5.35186 17.9152 5.68271 18.1203 6.04912 18.1203H7.76631C7.40023 18.6065 7.20249 19.1988 7.20303 19.8074C7.20303 21.3551 8.46084 22.6129 10.0085 22.6129C11.5562 22.6129 12.814 21.3551 12.814 19.8074C12.814 19.1977 12.6116 18.6043 12.2507 18.1203H16.6558C16.2897 18.6065 16.0919 19.1988 16.0925 19.8074C16.0925 21.3551 17.3503 22.6129 18.8979 22.6129C20.4456 22.6129 21.7034 21.3551 21.7034 19.8074C21.7034 19.1977 21.5011 18.6043 21.1401 18.1203H24.2382C24.7687 18.1203 25.2034 17.6883 25.2034 17.1551C25.2018 16.8994 25.0992 16.6546 24.9178 16.4743C24.7365 16.294 24.4912 16.1927 24.2354 16.1926ZM7.35889 3.91797L23.1034 3.96992L21.5612 12.6051L9.19365 12.627L7.35889 3.91797ZM10.0085 20.6715C9.53271 20.6715 9.14443 20.2832 9.14443 19.8074C9.14443 19.3316 9.53271 18.9434 10.0085 18.9434C10.4843 18.9434 10.8726 19.3316 10.8726 19.8074C10.8726 20.0366 10.7815 20.2564 10.6195 20.4184C10.4574 20.5805 10.2377 20.6715 10.0085 20.6715ZM18.8979 20.6715C18.4222 20.6715 18.0339 20.2832 18.0339 19.8074C18.0339 19.3316 18.4222 18.9434 18.8979 18.9434C19.3737 18.9434 19.762 19.3316 19.762 19.8074C19.762 20.0366 19.671 20.2564 19.5089 20.4184C19.3469 20.5805 19.1271 20.6715 18.8979 20.6715Z" fill="black" />
                         </svg>
+                    </button>
+                </div>
+
+                {/* Mobile Menu Links */}
+                <div className="md:hidden">
+                    <div className="flex flex-col space-y-4 mt-4">
+                        <Link to="/" className="text-black hover:text-[#B88E2F]">Home</Link>
+                        <Link to="/shop" className="text-black hover:text-[#B88E2F]">Shop</Link>
+                        <Link to="/about" className="text-black hover:text-[#B88E2F]">About</Link>
+                        <Link to="/contact" className="text-black hover:text-[#B88E2F]">Contact</Link>
                     </div>
-
-
                 </div>
             </div>
-            {/* <div className='container w-[420px] h-[740px] border-2 border-black bg-gray-100'>
-                <div className='flex justify-center items-center m-auto justify-between'>
-                    <h1 className='text-[24px] ml-8 font-[600]'>Shopping Cart</h1>
-                    <svg className='mr-10' width="17" height="19" viewBox="0 0 17 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.11059 9.67346C6.16575 9.61817 6.23127 9.5743 6.3034 9.54436C6.37554 9.51443 6.45287 9.49902 6.53097 9.49902C6.60907 9.49902 6.6864 9.51443 6.75853 9.54436C6.83067 9.5743 6.89619 9.61817 6.95134 9.67346L8.31222 11.0355L9.67309 9.67346C9.78458 9.56197 9.9358 9.49933 10.0935 9.49933C10.2511 9.49933 10.4024 9.56197 10.5138 9.67346C10.6253 9.78495 10.688 9.93616 10.688 10.0938C10.688 10.2515 10.6253 10.4027 10.5138 10.5142L9.15178 11.8751L10.5138 13.236C10.6253 13.3474 10.688 13.4987 10.688 13.6563C10.688 13.814 10.6253 13.9652 10.5138 14.0767C10.4024 14.1882 10.2511 14.2508 10.0935 14.2508C9.9358 14.2508 9.78458 14.1882 9.67309 14.0767L8.31222 12.7146L6.95134 14.0767C6.83985 14.1882 6.68864 14.2508 6.53097 14.2508C6.3733 14.2508 6.22208 14.1882 6.11059 14.0767C5.9991 13.9652 5.93647 13.814 5.93647 13.6563C5.93647 13.4987 5.9991 13.3474 6.11059 13.236L7.47266 11.8751L6.11059 10.5142C6.0553 10.4591 6.01143 10.3935 5.9815 10.3214C5.95156 10.2493 5.93616 10.1719 5.93616 10.0938C5.93616 10.0157 5.95156 9.9384 5.9815 9.86627C6.01143 9.79414 6.0553 9.72861 6.11059 9.67346Z" fill="#9F9F9F" />
-                        <path d="M8.3125 1.1875C9.09986 1.1875 9.85497 1.50028 10.4117 2.05703C10.9685 2.61378 11.2812 3.36889 11.2812 4.15625V4.75H5.34375V4.15625C5.34375 3.36889 5.65653 2.61378 6.21328 2.05703C6.77003 1.50028 7.52514 1.1875 8.3125 1.1875ZM12.4688 4.75V4.15625C12.4688 3.05394 12.0309 1.99679 11.2514 1.21734C10.472 0.437889 9.41481 0 8.3125 0C7.21019 0 6.15304 0.437889 5.37359 1.21734C4.59414 1.99679 4.15625 3.05394 4.15625 4.15625V4.75H0V16.625C0 17.2549 0.250223 17.859 0.695621 18.3044C1.14102 18.7498 1.74511 19 2.375 19H14.25C14.8799 19 15.484 18.7498 15.9294 18.3044C16.3748 17.859 16.625 17.2549 16.625 16.625V4.75H12.4688ZM1.1875 5.9375H15.4375V16.625C15.4375 16.9399 15.3124 17.242 15.0897 17.4647C14.867 17.6874 14.5649 17.8125 14.25 17.8125H2.375C2.06006 17.8125 1.75801 17.6874 1.53531 17.4647C1.31261 17.242 1.1875 16.9399 1.1875 16.625V5.9375Z" fill="#9F9F9F" />
-                    </svg>
-                </div>
+        </nav>
+    );
+};
 
-                <div className='border-b-[1px] border-[#D9D9D9] w-60 mt-4 m-2'></div>
-
-                <div className='flex justify-center items-center  gap-2 mt-12  w-[350px] h-[105px]'>
-                    <div className='w-[108px] h-[105px] bg-[#F9F1E7] rounded-lg'>
-                        <img className='w-full h-full object-cover' src="https://s3-alpha-sig.figma.com/img/2ac4/13c1/917ac944454e358f73d0af67e1f1b74e?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=noMBRPSyOWy9lEhbDPQp1GxND97sDVyrHdF~T~UgA5UUDXfIYlFm7F4ehEqO3jlW1~QTQR77RPjjtdZTNCn8ujhc9W0WrArYIeCwz2V8uiSKP~095E9DGsd3ItdZEcRp~254WrDjnj4V3R19g1W0JbA69SVaQwLMnp0GDgvFRw0tGHwue9393HGRD4~9yOZjVdP7JY87mjt7IUCrPDGt8g~B-YWNzfFp8RTYXkUGTsH0xx9JZpSRRhRKfGDlcgmYvZLwS1ctvPLkzA3gdbNcIYWYclwKs1E7DpP1EjiBIM7DbyjUIxSpkxxvBxEk9mKilxjiPv8TCDA7JKDpLQoLpQ__" alt="" />
-                    </div>
-                    <div className='mt-12'>
-                        <span className='text-sm'>Asgaard sofa</span>
-                        <p className='text-[#B88E2F] text-sm'>1 * Rs. 250,000.00</p>
-                    </div>
-                    <svg className='mt-16 ml-20' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0C4.47727 0 0 4.47727 0 10C0 15.5227 4.47727 20 10 20C15.5227 20 20 15.5227 20 10C20 4.47727 15.5227 0 10 0ZM13.37 7.91545C13.5356 7.744 13.6272 7.51436 13.6252 7.276C13.6231 7.03764 13.5275 6.80963 13.3589 6.64107C13.1904 6.47252 12.9624 6.37691 12.724 6.37484C12.4856 6.37277 12.256 6.4644 12.0845 6.63L10 8.71455L7.91545 6.63C7.83159 6.54317 7.73128 6.47392 7.62037 6.42627C7.50946 6.37863 7.39016 6.35355 7.26946 6.3525C7.14875 6.35145 7.02904 6.37445 6.91731 6.42016C6.80559 6.46587 6.70409 6.53338 6.61873 6.61873C6.53338 6.70409 6.46587 6.80559 6.42016 6.91731C6.37445 7.02904 6.35145 7.14875 6.3525 7.26946C6.35355 7.39016 6.37863 7.50946 6.42627 7.62037C6.47392 7.73128 6.54317 7.83159 6.63 7.91545L8.71455 10L6.63 12.0845C6.54317 12.1684 6.47392 12.2687 6.42627 12.3796C6.37863 12.4905 6.35355 12.6098 6.3525 12.7305C6.35145 12.8513 6.37445 12.971 6.42016 13.0827C6.46587 13.1944 6.53338 13.2959 6.61873 13.3813C6.70409 13.4666 6.80559 13.5341 6.91731 13.5798C7.02904 13.6255 7.14875 13.6486 7.26946 13.6475C7.39016 13.6465 7.50946 13.6214 7.62037 13.5737C7.73128 13.5261 7.83159 13.4568 7.91545 13.37L10 11.2855L12.0845 13.37C12.256 13.5356 12.4856 13.6272 12.724 13.6252C12.9624 13.6231 13.1904 13.5275 13.3589 13.3589C13.5275 13.1904 13.6231 12.9624 13.6252 12.724C13.6272 12.4856 13.5356 12.256 13.37 12.0845L11.2855 10L13.37 7.91545Z" fill="#9F9F9F" />
-                    </svg>
-                </div>
-
-            </div> */}
-        </div>
-    )
-}
-
-export default Navbar
+export default Navbar;
