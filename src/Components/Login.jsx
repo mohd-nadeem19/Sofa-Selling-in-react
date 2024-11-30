@@ -30,7 +30,10 @@ const Login = () => {
       }
     )
     const data = await response.json()
-    console.log(data);
+    // console.log(data)
+     console.log(data.idToken);
+     localStorage.setItem("Token",data.idToken);
+
 
   }
   return (

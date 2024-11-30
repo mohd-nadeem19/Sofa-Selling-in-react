@@ -1,36 +1,148 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+const products = [
+        
+    {
+        id: "1",
+        img: "https://s3-alpha-sig.figma.com/img/4491/a0ea/43eebd52ea72d60650f31030ec4bf7e6?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gVm9lLm~XAPOYFZXTg30yde~Ixv9LaNYUya5RkEPWozJ~NJZNb1utY57dFh375Rjf4mcifPkF-apjHcGw4uSpz-ixaj~AaeUT8Q~Wb28pPJWgWQ0QwqvYANovzuKqGG8m1W6-wipnPeMyh8SbRHH7~2FciUUkgZEQB2XTJe5NbNMrFqUnydRlsnS341RGrR6oPN9ooaw92QxASdiIuBZHNwujqNOwNfaJxb2brFQugLtK6pJYBbibWHbX6pBIjiF6BcmqoO~p8XMRb0ZMfhyIfINgZAi8TkW1FZTnbESc3aLguIRIYueIGfxK~VHhWwTNBwoOvbjq~Ks4HXPOiEumg__",
+        heading: "Syltherine",
+        para: "Stylish cafe chair",
+        current: "Rp 2.500.000",
+        original: "Rp 3.500.000",
+        img1: "https://images.unsplash.com/photo-1512212621149-107ffe572d2f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c29mYSUyMHNlbGxpbmd8ZW58MHx8MHx8fDA%3D",
+        img2: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c29mYSUyMHNlbGxpbmd8ZW58MHx8MHx8fDA%3D",
+        img3: "https://images.unsplash.com/photo-1504194008492-c55ffe34e18d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHNvZmElMjBzZWxsaW5nfGVufDB8fDB8fHww",
+        img4: "https://plus.unsplash.com/premium_photo-1723834562784-a56d7b234360?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHNvZmElMjBzZWxsaW5nfGVufDB8fDB8fHww"
+    },
+    {
+        id: "2",
+        img: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDMwfHx8ZW58MHx8fHx8",
+        heading: "Leviosa",
+        para: "Comfortable living room chair",
+        current: "Rp 2.000.000",
+        original: "Rp 3.000.000",
+        img1: "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHNvZmElMjBzZWxsaW5nfGVufDB8fDB8fHww",
+        img2: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D",
+        img3: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D",
+        img4: "https://images.unsplash.com/photo-1547166812-0fca6370dc03?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQyfHx8ZW58MHx8fHx8"
+    },
+    {
+        id: "3",
+        img: "https://s3-alpha-sig.figma.com/img/2084/99f3/7c62fb49f7d4a1a6a5dc5959b40150ed?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=H37x7E8NpXgrzTD-sl4opO9zArRy1m4LgcdFIgggDhhmHBL1PcdPf~EpBRj9S~L3XgdtCa9IEy1TvCwlPxiqtLeXRWkoIhXxj0-wmXmpjfW4OahT7zps7Gd41O4U~FIDvjilfBKkDmmNPw3YaPkHBKsEf~Mefh81bfo8C8Wsw8xXBZ7R~F4ISPAAmHw3r7U4UKDccLGpp2nMb~oyai44oVtNMfOEgaOXA4Wpx8nnmP9QyfxcEBImdVd0K5a-8nt4-CtvQfsztUhbhfpGGG3wqu8TTfYPXs7CID85dyI4QTXrlqd9RjIXy8B47YZUjwut7dOuCzHVJTRZIwgY0HjbRA__",
+        heading: "Lolito",
+        para: "Luxury big sofa",
+        current: "Rp 7.000.000",
+        original: "Rp 14.000.000",
+        im1: "https://images.unsplash.com/photo-1509764986935-841accffc894?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHNvZmElMjBzZWxsaW5nfGVufDB8fDB8fHww",
+        img2: "https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fHw%3D",
+        img3: "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8fHw%3D",
+        img4: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEyfHx8ZW58MHx8fHx8",
+    },
+    {
+        id: "4",
+        img: "https://s3-alpha-sig.figma.com/img/1f73/e563/4a5dbc0c29efbae1beca6ab40dd9b598?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=V8S9sURtklnUGaYVLRdcCB~oYGP~2MnmpVyeAlXpLz1GbFCKiTx3Ah1zZm5~7Qgmwd2fyFYp5uz-HwP3lKQDCW1HW~qcTYkIbI5MDSncqmagHEMApwfAnCXCebZJl1sjNyKp5GLUC2jAArY7r-bFmFq8V8VaxVhwdaS9OE2pJwwSLEqATz-Gl9dvSWAskbTlq7Za~bRr0mP-1VzrexepUoJ3atJYXRYZ5tXo4YoC0b2-HZWso~fexLe2USSGZL~GXRmC1ZC9YQ0Jm8nJvPwwCt190IQMfGUDDo8M6Sa91~kR3OC-mwQeYb1X16yXG5obDqLNmmX~YA7NVFYZU4mnbg__",
+        heading: "Respira",
+        para: "Outdoor bar table and stool",
+        current: "Rp 500.000",
+        original: "Rp 14.000.000",
+        img1: "https://images.unsplash.com/photo-1602872030276-17d4d67bb130?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fHw%3D",
+        img2: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8",
+        img3: "https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fHw%3D",
+        img4: "https://images.unsplash.com/photo-1579520306276-7d07992a6efd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8",
+    },
+    {
+        id: "5",
+        img: "https://s3-alpha-sig.figma.com/img/50f3/12dc/a7c05024ab4e27374edb12195b6559e2?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Pm4BEUybYQNBF6wZZO9BxwFnaABw1Qdnfo7voZ9KQHpfwQPbHeHgEWTpnmXFQxAcxqmOU4xSJEmqrUQXec~CCMF5Mst4lduO6uj2WXqH18QXDT3-PQoftqBJ~8y8CC-B0rs6maQbw1vjRZE3X8HWYLjHZJpG2tqg6W1xg5ZJjJNRQkyqJ7Drwo~CcDQMZs8~HCZuH4joE2k0mYC6DfUoB08JvErOirpM576YPBoWi8difmOBjYGy~xc1~aeyhMT6F5fXCOUpFf6QA0K~mENGXTY9V-h2Z0QYNJO1~3AGmd3wPVfo8xJJ9TagMbhsHokY39WcN8P2QoZV8vsa-2ye2w__",
+        heading: "Grifo",
+        para: "Night lamp",
+        current: "Rp 500.000",
+        original: "Rp 14.000.000",
+        img1: "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIxfHx8ZW58MHx8fHx8",
+        img2: "https://images.unsplash.com/photo-1603204077809-d94bb1ea0fad?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE3fHx8ZW58MHx8fHx8",
+        img3: "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIxfHx8ZW58MHx8fHx8",
+        img4: "https://images.unsplash.com/photo-1491926626787-62db157af940?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI1fHx8ZW58MHx8fHx8"
+    },
+    {
+        id: "6",
+        img: "https://s3-alpha-sig.figma.com/img/b609/6926/ea43a4c55f9e28aa3592f17ff47a4303?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=I6qXvTf6LC5FuLFJC7Jr-asfSGXwEiYZ8WkUuZdOA8oRI3QxX2dAMeHAEc4YibgqMzxPwZvL4~MJN7U65Wg2Jy9o9OzcZa3ue0~-TWup0rN-LIFnFfj76mLgclPZtoCCKNw8~mwB4ljxp3JPPe8r23ZX4qf9EbehaSgp4DczPXiMuyqnC0DqSOFYOJ11zhYG9mShraEuzbTAEhFEUoIsFGWTFPT1K7-JIBWvhEYXB16qv9QRRTW0IYxcm5qMWSVlSiNNBukeaQb0PWacbcHoobJFE0Fxe1NHmjD7jj8Jpx8unB3dRjhrZYezUlJXU-7aMGSzcOHvRy7lDEEXp98nEw__",
+        heading: "Muggo",
+        para: "Small mug",
+        current: "Rp 500.000",
+        original: "Rp 14.000.000",
+        img1: "https://images.unsplash.com/photo-1601084881623-cdf9a8ea242c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI2fHx8ZW58MHx8fHx8",
+        img2: "https://images.unsplash.com/photo-1653972233229-1b8c042d6d8e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM0fHx8ZW58MHx8fHx8",
+        img3: "https://images.unsplash.com/photo-1653972233739-667468bbd5a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM2fHx8ZW58MHx8fHx8",
+        img4: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDMzfHx8ZW58MHx8fHx8"
+    },
+    {
+        id: "7",
+        img: "https://s3-alpha-sig.figma.com/img/8d34/199d/e77ede2f478b2f26210bd264978981f6?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=g-AxcsXR2EPyHormEeF0CeV-iOG0IWB-dDHxVM8SkPzYgTQZ77LJCnCpc-Z5zNikFr~a1EHFtaVSpsXT9eXHR1uLTqj6CckPpDZJ8vOKSXt7g-M-9vhAqkgE6CuqCxgz8234TPTmciVY2dEoJUwrB-0NiBSBbGf9DtRF6ZB0pKEUK7CSFGqvDng68pQ6CmrTQjd2Go~m1u6b1KvQnlGKbSqM-~vpe4NY9Yriv~KQ85E80LgnINq5WmDXvVEWFJQBwVec-GNcRFjfONP~~3VrC8d96XPN7trR3T~TPsvMFEnQwoPG~arPLct7IENzRes50qAV9s7WbwsI3cUckiYNpg__",
+        heading: "Pingky",
+        para: "Cute bed set",
+        current: "Rp 2.500.00",
+        original: "Rp 14.000.000",
+        img1: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM5fHx8ZW58MHx8fHx8",
+        img2: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQxfHx8ZW58MHx8fHx8",
+        img3: "https://images.unsplash.com/photo-1605917197321-b460a94bd747?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQ0fHx8ZW58MHx8fHx8",
+        img4: "https://images.unsplash.com/photo-1560449752-3fd4bdbe7df0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQ1fHx8ZW58MHx8fHx8"
+    },
+    {
+        id: "8",
+        img: "https://s3-alpha-sig.figma.com/img/6028/dfe0/3d98b27fb98ee49958d7089f10d39dfe?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=i7AQjn7xM17-bbDW16OXWzdUJLh~v7cRhDjdWqX7KF7k~WvUzgwu8~FAlsMsXaDkmm1HP9AadGGJqa-HG7Z~L-5fhYRPhMCUUsuBSd23wLJzFOVBP2VWHTd~m8gxgfPO~iAq5zwpRSdfFYf925VhdGCYMr0Pf9mhmXnIAVtMCydW8Rszhs3wPmkq1JPCgSzKFj5gdBjUAl3k5fuBUCiwKpm7OaHfTsiam~rN4XxjbCOX4YFkBmNLeSS2oL8KDArx-IPPeZgQN9XYNCB6G0jGI65ioZjARSjeJMXvmml-~HyPvS3u6bRG48h-hJonslgKeuAG2B~9r-UYPgyFJ1hCRg__",
+        heading: "Potty",
+        para: "Minimalist flower pot",
+        current: "Rp 2.500.00",
+        original: "Rp 14.000.000",
+        img1: "https://images.unsplash.com/photo-1560449752-3fd4bdbe7df0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQ1fHx8ZW58MHx8fHx8",
+        img2: "https://plus.unsplash.com/premium_photo-1674815329488-c4fc6bf4ced8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDUwfHx8ZW58MHx8fHx8",
+        img3: "https://images.unsplash.com/photo-1605774337664-7a846e9cdf17?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDUzfHx8ZW58MHx8fHx8",
+        img4: "https://images.unsplash.com/photo-1653972233678-5d1c28d2a99f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDU1fHx8ZW58MHx8fHx8"
+    }
+
+]
+
+// Array of Objects End
+
 
 const AsgaardSofa = () => {
+
+const result = useParams();
+console.log(result.id)
+
+const singleProduct = products.find((item) => item.id === result.id)
+
     return (
         <div className='w-full h-[850px]'>
             <div className='flex gap-16 pt-20 pl-12 w-[1200px] h-[750px]'>
                 <div className='flex gap-4 w-[550px] h-[500px]'>
                     <div className='w-[80px] h-[420px] space-y-4'>
                         <div className='w-[80px] h-[80px] bg-[#F9F1E7] rounded-[10px] flex justify-center items-center'>
-                            <img className='w-full h-full object-cover' src="https://s3-alpha-sig.figma.com/img/e8e6/980e/c9e9224b3002d53824688ecee9c882c5?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=eQFHPs0oJXtWHqR2nRgxNirA6c-rtSOwPt-WpeL1figDfcL-s1lxHSrgGkUCgTGIdnudGQg~BTwdcdi6X5qzgWi40-rONB2plZLASkKIw9QAoouCSMpPpet275tf0Ca6pH~CLc-S~Y7K9HTnMJ5hMQU3u6mViBQFWzS9tFAufDYkcx3cNM~8UYlsmGQ0a4AS~XKDcZJX2eyN9SCpmvvRE6y0LiDxMgSMnsIgYQ8qcx06hjBTvJOtMl~SvHB-MduqEsuemEH9QWD1fII1aya9fQhtSdx6LTSJD3iRtQ3SMM2tudXOZMRbD-fAuroYvRMH~PFt~bzSrbSjMECpNNGuVA__" alt="" />
+                            <img className='w-full h-full object-cover rounded-[10px]' src={singleProduct.img1} alt="" />
                         </div>
                         <div className='w-[80px] h-[80px] bg-[#F9F1E7] rounded-[10px] flex justify-center items-center'>
-                            <img className='w-full h-full object-cover' src="https://s3-alpha-sig.figma.com/img/4d65/4cce/148fae44b3bf6e9ac8ce6743c19e7de6?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bufgnuiaZhn7lLEi3V1bIyiyzXV5-MTkK~pIBIrzDS9wBikFYR73vV1eQW-DfYngChS97I1dTs4PPtInQSrmY-gSs9eQpIEabLScvT2M09kV34hLSUHy~WfZh6Pcxr-wdCVTcWpzEi0cyfpfmFa2stn4uf5mjU9MJtvHMp6p8sIS8dUwuvdUhS~l~qQnMwVfFq2biL3iCa~mJUBCYvIKfTRKjk8d6sVq1qqa0BOG27yde84xML4W321AM78KNnsxIWRv0eumZIPn-YEtfRyj~Hi2BkA-~A0oq2w6iCG1JV89FA00kLRuK45-rB-TG-g3W71WkaacALx~-5LxLpFaag__" alt="" />
+                            <img className='w-full h-full object-cover rounded-[10px]' src={singleProduct.img2} alt="" />
                         </div>
                         <div className='w-[80px] h-[80px] bg-[#F9F1E7] rounded-[10px] flex justify-center items-center'>
-                            <img className='w-full h-full object-cover' src="https://s3-alpha-sig.figma.com/img/83ef/2293/24c656816d67a755100ac5f664833551?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NYQ6LmuWkmx0DLUnycTzCOhOLTRHM0vAuW1D-KOHBemHbQ-h-kJl7t1vYWNG2hJYaGJI4Wk7qdlUu5MxpMCLITAAhGZt24BA44hJYVGhFfJMNWeNLfgTUrOe7OSoMVo-Q6d9VpvUF55RvYRRbQEQlb5FirAiM3MsW1pitHphCBnma63l14HApQS6OMYeY~E8b2QtxKDSCKN2mADeH5us0m7SXyMG~M~AhcGa5HwGWfe0TNjNffl6zaXETtWbSsoBbFrLOycKKxthyvHTnjlIa9ATYdaO1lIlTrtX1hp5bW-1HnyoZeX-C24HIMEMNKnHUHBjCFkoPj3a5rT7kwmGcg__" alt="" />
+                            <img className='w-full h-full object-cover rounded-[10px]' src={singleProduct.img3} alt="" />
                         </div>
                         <div className='w-[80px] h-[80px] bg-[#F9F1E7] rounded-[10px] flex justify-center items-center'>
-                            <img className='w-full h-full object-cover' src="https://s3-alpha-sig.figma.com/img/75ae/609a/0c46ac4eb9c274966b1133cb71128f16?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=X8jjMfuZFmm7G-mTmgCu3aj~G3D5yI~x-R9TPjNd4H1R1XujE64gniebSZTR6geUlwSEcAmyAayh9-07IIo0cVX5k1jki2YFqXw0stfU-Y0BHA3INCCEdVsKxaURMr~Ogzl9bfrusHdl8gPUICihYN6C3dMZFg-Au7~5hCl~jteu-h4UI9n4Wv18n~xoi7tl0OvKZwe-HifRCMBNkeYzVRaEtJLq7L3vCeUaWsPY5VbUTygFPTyYXaZ6oLWtfhZpV2Ss-NbYeUxEwZw97FTwiJQbT7cvml9LZ1O6I823B6IX8Gh4Q1zjU3Md0iLvJeljj3U6-gbEnOrE1DSPcRCv4w__" alt="" />
+                            <img className='w-full h-full object-cover rounded-[10px]' src={singleProduct.img4} alt="" />
                         </div>
 
                     </div>
 
-                    <div className='w-[423px] h-[500px] bg-[#F9F1E7] rounded-[10px]'>
-                        <img className='w-full h-full object-cover' src="https://s3-alpha-sig.figma.com/img/2ac4/13c1/917ac944454e358f73d0af67e1f1b74e?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LR1zazj4mMTeP3rKZZtowUiNx7ldzrzSu8chTgeCEdpPlB6Ss7iEu0DDBXi-VxZQxyk1gKRqsoKMKB-OewCbd24WOeaPDDIC0AG-tlhButFRFx-KRSiDYwmx-BSlM1rg5yEE2c4X14~Rkyk6CD1-RXbmdZxTv4YJemuxgC9EMdT28-u2pqNOkuVbQHfzMv~zqRoHl2v9uUkkehnfKCmvb3k-QQx~s7REO0HCLORjI3nsZOvPj21XWa3ZfZzg5Kp566pjhLcv05r45ia9tjoqBofzsqhMSm9bLDAuepuetNPL6RbVovCtnP8RuDqEsV0MWDg0M0g0jsBpFLUDyKR2TA__" alt="" />
+                    <div className='w-[423px] h-[500px] bg-[#F9F1E7] rounded-[10px] overflow-hidden'>
+                        <img className='w-full h-full object-cover transition transform duration-500 hover:scale-110' src={singleProduct.img} alt="" />
                     </div>
 
                 </div>
                 {/* LEFT-DIV-END */}
 
                 <div className='w-[400px] h-[750px] space-y-7'>
-                    <h1 className='font-poppins font-[400] text-[42px]'>Asgaard sofa</h1>
-                    <span className='font-poppins font-[500] text-[24px] text-[#9F9F9F]'>Rs. 250,000.00</span>
+                    <h1 className='font-poppins font-[400] text-[42px]'>{ singleProduct.heading }</h1>
+                    <span className='font-poppins font-[500] text-[24px] text-[#9F9F9F]'>{ singleProduct.current }</span>
+                    <br />
+                    <span className='font-poppins font-[500] text-[24px] text-[#9F9F9F]'>{ singleProduct.original }</span>
                     <div className='flex gap-4'>
                         <svg width="124" height="20" viewBox="0 0 124 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 1L13 7L19 7.75L14.88 12.37L16 19L10 16L4 19L5.13 12.37L1 7.75L7 7L10 1Z" fill="#FFC700" />
@@ -42,7 +154,7 @@ const AsgaardSofa = () => {
                         <div className="border-l-2 border-[#9F9F9F] h-[30px]"></div>
                         <span className='font-poppins font-[400] text-[13px] text-[#9F9F9F]'>5 Customer Review</span>
                     </div>
-                    <p className='font-poppins font-[400] text-[13px]'>Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.</p>
+                    <p className='font-poppins font-[400] text-[13px]'>{ singleProduct.para }</p>
 
                     <div className='space-y-2'>
                         <span className='font-poppins font-[400] text-[#9F9F9F] text-[14px]'>Size</span>

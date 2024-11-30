@@ -6,8 +6,11 @@ import HomePage from "./Pages/HomePage"
 import ShopPage from "./Pages/ShopPage"
 import SinglePage from "./Pages/SinglePage"
 import ContactPage from "./Pages/ContactPage"
+import ShopingPage from "./Pages/ShopingPage"
 
 function App() {
+
+  const isToken = localStorage.getItem("Token");
 
   return (
     <div>
@@ -15,10 +18,11 @@ function App() {
         <Route path="/login" element={ <LoginPage /> }/>
         {/* <Route path="register" element={ <RegisterPage /> }/> */}
         <Route path="/loginRegister" element={ <LoginRegisterPage /> }/>
-        <Route path="/" element={ <HomePage/> }/>
+        <Route path="/" element={isToken ? <HomePage/> : <LoginPage /> }/>
         <Route path="/shop" element={ <ShopPage /> }/>
-        <Route path="/about" element={ <SinglePage /> }/>
         <Route path="/contact" element={ <ContactPage /> }/>
+        <Route path="/shoping" element={ <ShopingPage /> }/>
+        <Route path="/:id" element={ <SinglePage /> }/>
       </Routes>
     </div>
     )
