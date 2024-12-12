@@ -7,6 +7,7 @@ import ShopPage from "./Pages/ShopPage"
 import SinglePage from "./Pages/SinglePage"
 import ContactPage from "./Pages/ContactPage"
 import ShopingPage from "./Pages/ShopingPage"
+import CartPage from "./Pages/CartPage"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/shop" element={ <ShopPage /> }/>
         <Route path="/contact" element={ <ContactPage /> }/>
         <Route path="/shoping" element={ <ShopingPage /> }/>
+        <Route path="/cart" element={ <CartPage /> }/>
         <Route path="/:id" element={ <SinglePage /> }/>
       </Routes>
     </div>

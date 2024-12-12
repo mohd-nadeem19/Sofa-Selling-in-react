@@ -9,7 +9,7 @@ const Contact = () => {
             <div className='absolute top-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
                 <div className=' w-[240px] h-[140px] -space-y-5 '>
                     <img className='w-[80px] h-[80px] object-cover ml-10 ' src="https://s3-alpha-sig.figma.com/img/2727/769b/a74736d502746301ed573ed8940fc322?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DSLuvz2qVcURnwgLJEofZ3eYz~cS4rYp4ec5NkV6VHJaBdxC8pE1fwdAh-cNbDqv2sI1-OmIRQTfFfi3Gs0Ww3kmoeBGdF9LuMfnXoElZ5Qj1IorTuaUF9e4OsXFn-Rka1rZnFwFRgozMFv4R0W0mpY6AOeUc-Wa5qZvYsRrqZLjSn92kGkekzp~6kguPK85SSj7k-iGbA7oMdvgvdMKtAxbMY8Tfa--oddDHZEQgwtu2ANfyG3kxPV1KUf3Pc7zPWJWKSz9vm~Rwpa6AkKtt76UYTwsy9S-ofaizn9iY4ROtqdz1yfS6EnNWlHu6MmD8if9HIBrx057-2ns2coKSA__" alt="" />
-                    <h1 className='font-poppins font-[500] text-[48px] '>Contact</h1>
+                    <h1 className='font-poppins font-[500] text-[48px] ml-8 '>Cart</h1>
                 </div>
                 <div className='flex gap-2 place-items-center ml-6'>
                     <span className='text-[16px]'>Home</span>

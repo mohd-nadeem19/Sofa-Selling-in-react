@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 const products = [
-        
+
     {
         id: "1",
         img: "https://s3-alpha-sig.figma.com/img/4491/a0ea/43eebd52ea72d60650f31030ec4bf7e6?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gVm9lLm~XAPOYFZXTg30yde~Ixv9LaNYUya5RkEPWozJ~NJZNb1utY57dFh375Rjf4mcifPkF-apjHcGw4uSpz-ixaj~AaeUT8Q~Wb28pPJWgWQ0QwqvYANovzuKqGG8m1W6-wipnPeMyh8SbRHH7~2FciUUkgZEQB2XTJe5NbNMrFqUnydRlsnS341RGrR6oPN9ooaw92QxASdiIuBZHNwujqNOwNfaJxb2brFQugLtK6pJYBbibWHbX6pBIjiF6BcmqoO~p8XMRb0ZMfhyIfINgZAi8TkW1FZTnbESc3aLguIRIYueIGfxK~VHhWwTNBwoOvbjq~Ks4HXPOiEumg__",
@@ -106,10 +106,39 @@ const products = [
 
 const AsgaardSofa = () => {
 
-const result = useParams();
-console.log(result.id)
 
-const singleProduct = products.find((item) => item.id === result.id)
+    const result = useParams();
+    console.log(result.id)
+
+    const singleProduct = products.find((item) => item.id === result.id)
+
+    const handleAddToCart = async () => {
+        // console.log("Add to cart clicked");
+        const data = {
+            heading: singleProduct.heading,
+            current: singleProduct.current,
+            image: singleProduct.img
+        }
+        // console.log(data)
+        try {
+            const response = await fetch('http://localhost:8000/post', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            if (response) {
+                alert("Product added to cart successfully")
+            } else {
+                alert("Failed to add product to cart")
+            }
+        } catch (error) {
+            console.error("Error adding to cart:", error)
+        }
+    };
+
+
 
     return (
         <div className='w-full h-[850px]'>
@@ -139,10 +168,10 @@ const singleProduct = products.find((item) => item.id === result.id)
                 {/* LEFT-DIV-END */}
 
                 <div className='w-[400px] h-[750px] space-y-7'>
-                    <h1 className='font-poppins font-[400] text-[42px]'>{ singleProduct.heading }</h1>
-                    <span className='font-poppins font-[500] text-[24px] text-[#9F9F9F]'>{ singleProduct.current }</span>
+                    <h1 className='font-poppins font-[400] text-[42px]'>{singleProduct.heading}</h1>
+                    <span className='font-poppins font-[500] text-[24px] text-[#9F9F9F]'>{singleProduct.current}</span>
                     <br />
-                    <span className='font-poppins font-[500] text-[24px] text-[#9F9F9F]'>{ singleProduct.original }</span>
+                    {/* <span className='font-poppins font-[500] text-[24px] text-[#9F9F9F]'>{ singleProduct.original }</span> */}
                     <div className='flex gap-4'>
                         <svg width="124" height="20" viewBox="0 0 124 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 1L13 7L19 7.75L14.88 12.37L16 19L10 16L4 19L5.13 12.37L1 7.75L7 7L10 1Z" fill="#FFC700" />
@@ -154,7 +183,7 @@ const singleProduct = products.find((item) => item.id === result.id)
                         <div className="border-l-2 border-[#9F9F9F] h-[30px]"></div>
                         <span className='font-poppins font-[400] text-[13px] text-[#9F9F9F]'>5 Customer Review</span>
                     </div>
-                    <p className='font-poppins font-[400] text-[13px]'>{ singleProduct.para }</p>
+                    <p className='font-poppins font-[400] text-[13px]'>{singleProduct.para}</p>
 
                     <div className='space-y-2'>
                         <span className='font-poppins font-[400] text-[#9F9F9F] text-[14px]'>Size</span>
@@ -184,9 +213,11 @@ const singleProduct = products.find((item) => item.id === result.id)
                             <span className='text-[16px]'>1</span>
                             <span className='text-[16px]'>+</span>
                         </div>
-                        <div className='flex justify-center items-center w-[150px] h-[50px] border-2 border-black rounded-[10px] '>
+                        <button
+                            onClick={handleAddToCart}
+                            className='flex justify-center items-center w-[150px] h-[50px] border-2 border-black rounded-[10px] '>
                             <span className='text-[15px] font-poppins font-[400]'>Add To Cart</span>
-                        </div>
+                        </button>
                         <div className='flex justify-center items-center gap-2  w-[150px] h-[50px] border-2 border-black rounded-[10px] '>
                             <span>+</span>
                             <span className='text-[15px] font-poppins font-[400]'>Compare</span>

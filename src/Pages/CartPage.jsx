@@ -1,22 +1,20 @@
 import React from 'react'
 import Navbar from '../Components/CartPageCom/Navbar'
 import Contact from '../Components/CartPageCom/Contact'
-import GetInTouch from '../Components/ContactPageCom/GetInTouch'
+import CartTotal from '../Components/CartPageCom/CartTotal'
 import HighQuality from '../Components/CartPageCom/HighQuality'
 import Footer from '../Components/CartPageCom/Footer'
 
-const ContactPage = () => {
+const CartPage = () => {
   return (
     <div>
         <Navbar />
         <Contact />
-        <GetInTouch />
+        <CartTotal />
         <HighQuality />
         <Footer />
-
-        
     </div>
   )
 }
 
-export default ContactPage
+export default CartPage

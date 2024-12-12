@@ -1,9 +1,9 @@
 import React from 'react'
-import Navbar from '../Components/ContactPageCom/Navbar'
+import Navbar from '../Components/CartPageCom/Navbar'
 import NavSection from '../Components/ShopPageCom/NavSection'
 import Images from '../Components/SingleProduct/Images'
-import HighQuality from '../Components/ContactPageCom/HighQuality'
-import Footer from '../Components/ContactPageCom/Footer';
+import HighQuality from '../Components/CartPageCom/HighQuality'
+import Footer from '../Components/CartPageCom/Footer';
 
 const ShopPage = () => {
   return (
